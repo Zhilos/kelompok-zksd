@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelompok ZKSD</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="animated-bg"></div>
+
+    <!-- Login Section -->
+    <div class="login-container" id="loginSection">
+        <div class="login-box">
+            <h1>ZKSD</h1>
+            <input type="text" id="username" placeholder="Masukkan username" required>
+            <button onclick="login()">Masuk</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Navigation -->
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showSection('marketplace')">Marketplace</a></li>
+                <li><a href="#" onclick="showSection('calculator')">Kalkulator Bisnis</a></li>
+                <li><a href="#" onclick="logout()">Keluar</a></li>
+            </ul>
+        </nav>
+
+        <!-- Marketplace Section -->
+      <div id="marketplace" class="marketplace">
+          <!-- Existing marketplace content -->
+        <button class="fab" onclick="openModal('addProductModal')" aria-label="Tambah Produk">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+        </button>
+      </div>
+
+        <!-- Calculator Section -->
+        <div id="calculator" class="calculator" style="display: none;">
+            <h2>Kalkulator Bisnis</h2>
+            <select id="calcType" onchange="updateCalculatorInputs()">
+                <option value="profit">Laba Rugi</option>
+                <option value="roi">ROI</option>
+                <option value="bep">BEP</option>
+            </select>
+            <div id="calcInputs"></div>
+            <button onclick="calculate()">Hitung</button>
+            <div id="result" class="result"></div>
+        </div>
+    </div>
+
+    <!-- Add Product Modal -->
+    <div class="modal" id="addProductModal">
+        <div class="modal-content">
+            <h2>Tambah Produk Baru</h2>
+            <form id="addProductForm" onsubmit="addProduct(event)">
+                <div class="form-group">
+                    <label>Nama Penjual</label>
+                    <input type="text" id="sellerName" required>
+                </div>
+                <div class="form-group">
+                    <label>Nama Produk</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label>Harga Produk</label>
+                    <input type="number" id="productPrice" min="0" required>
+                </div>
+                <button type="submit">Tambah Produk</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
